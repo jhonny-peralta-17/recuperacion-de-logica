@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operaciones con Inputs</title>
+</head>
+<body>
+  <h2>Operaciones con Inputs</h2>
+
+  <label for="input1">Input 1:</label>
+  <input type="number" id="input1" min="0" required>
+  <br><br>
+
+  <label for="input2">Input 2:</label>
+  <input type="number" id="input2" min="0" required>
+  <br><br>
+
+  <label for="input3">Input 3:</label>
+  <input type="number" id="input3" min="0" required>
+  <br><br>
+
+  <button onclick="calcularOperacion1()">Calcular Operación 1</button>
+  <button onclick="repetirOperacion()">Calcular Operación 2</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function calcularOperacion1() {
+      var input1 = parseInt(document.getElementById('input1').value);
+      var input2 = parseInt(document.getElementById('input2').value);
+      var input3 = parseInt(document.getElementById('input3').value);
+      var resultado = document.getElementById('resultado');
+
+      if (input1 < input3) {
+        var multiplicacion = input1 * input2 * input3;
+        resultado.innerHTML = `Se está realizando la operación de multiplicación (${input1} * ${input2} * ${input3}) = ${multiplicacion}`;
+      } else if (input2 === 0) {
+        var mayor = Math.max(input1, input3);
+        var menor = Math.min(input1, input3);
+        var resta = mayor - menor;
+        resultado.innerHTML = `Se está realizando la operación de resta (${mayor} - ${menor}) = ${resta}`;
+      } else if (input1 === input2) {
+        var suma = input1 + input2 + input3;
+        resultado.innerHTML = `Se está realizando la operación de suma (${input1} + ${input2} + ${input3}) = ${suma}`;
+      } else {
+        resultado.innerHTML = `No se cumplió ninguna condición de validación.`;
+      }
+    }
+
+    function repetirOperacion() {
+      var input1 = parseInt(document.getElementById('input1').value);
+      var input2 = parseInt(document.getElementById('input2').value);
+      var input3 = parseInt(document.getElementById('input3').value);
+      var resultado = document.getElementById('resultado');
+
+      var veces = input1 * (input2 + input3);
+      resultado.innerHTML = `Se repite la operación de multiplicación ${input1} * (${input2} + ${input3}) ${veces} veces.`;
+    }
+  </script>
+</body>
+</html>
